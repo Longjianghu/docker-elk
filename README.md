@@ -26,19 +26,13 @@ composer config -g repo.packagist composer https://packagist.phpcomposer.com
 
 ### 构建容器
 
-docker pull docker.elastic.co/elasticsearch/elasticsearch:6.3.0
-
-docker pull docker.elastic.co/kibana/kibana:6.3.0
-
-docker pull docker.elastic.co/logstash/logstash:6.3.0
-
-docker pull docker.elastic.co/beats/filebeat:6.3.0
+docker build -t docker-es:6.3 ./app/elasticsearch/
 
 ### 运行方法
 
 Elasticsearch:
 
-docker run --name docker-es -p 9200:9200 -p 9300:9300 -d docker.elastic.co/elasticsearch/elasticsearch:6.3.0
+docker run --name docker-es -p 9200:9200 -p 9300:9300 -v /data/var/lib/elasticsearch:/usr/share/elasticsearch/data -v /data/var/etc/elasticsearch/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml -v /data/var/etc/elasticsearch/IKAnalyzer.cfg.xml:/usr/share/elasticsearch/config/analysis-ik/IKAnalyzer.cfg.xml -d docker-es:6.3
 
 Kibana:
 
@@ -48,3 +42,6 @@ Logstash:
 
 docker run --name docker-logstash -d docker.elastic.co/logstash/logstash:6.3.0
 
+Filebeat：
+
+docker run --name docker-filebeat -v /data/var/etc/filebeat/filebeat.yml:/usr/share/filebeat/filebeat.yml -v /data/var/etc/filebeat/prospectors.d:/usr/share/filebeat/prospectors.d -d docker.elastic.co/beats/filebeat:6.3.0

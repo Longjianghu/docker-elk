@@ -7,7 +7,8 @@ services:
             - "9200:9200"
             - "9300:9300"
         volumes:
-            - /data/var/etc/elasticsearch:/usr/share/elasticsearch/config/elasticsearch.yml
+            - /data/var/etc/elasticsearch/IKAnalyzer.cfg.xml:/usr/share/elasticsearch/config/analysis-ik/IKAnalyzer.cfg.xml
+            - /data/var/etc/elasticsearch/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
             - /data/var/lib/elasticsearch:/usr/share/elasticsearch/data
         networks:
             - elk-network
@@ -39,6 +40,9 @@ services:
         container_name: docker-filebeat
         depends_on:
             - elasticsearch
+        volumes:   
+            - /data/var/etc/filebeat/filebeat.yml:/usr/share/filebeat/filebeat.yml
+            - /data/var/etc/filebeat/prospectors.d:/usr/share/filebeat/prospectors.d
         networks:
             - elk-network
         restart: always
