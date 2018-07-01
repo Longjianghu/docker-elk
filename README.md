@@ -36,7 +36,7 @@ docker run --name docker-es -p 9200:9200 -p 9300:9300 -v /data/var/lib/elasticse
 
 Kibana:
 
-docker run --name docker-kibana -p 5601:5601 -e ELASTICSEARCH_URL=http://172.17.0.1:9200 -d docker.elastic.co/kibana/kibana:6.3.0
+docker run --name docker-kibana -p 5601:5601 -v /data/var/etc/kibana/kibana.yml:/usr/share/kibana/config/kibana.yml -d docker.elastic.co/kibana/kibana:6.3.0
 
 Logstash:
 
