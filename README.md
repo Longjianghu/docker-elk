@@ -1,6 +1,6 @@
 ### 项目说明
 
-当前项目仅用于学习目的，请勿用于生产环境。
+更详细的使用说明请看这是：https://www.docker.elastic.co/，请注意：如果内存过小将无法启动。
 
 ### 安装 Docker
 
@@ -19,10 +19,6 @@ curl -sSL https://get.daocloud.io/daotools/set_mirror.sh | sh -s http://8145ad9d
 yum -y install epel-release python-pip
 
 pip install docker-compose
-
-### 更换 Composer 镜像
-
-composer config -g repo.packagist composer https://packagist.phpcomposer.com
 
 ### 构建容器
 
