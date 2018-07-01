@@ -1,0 +1,47 @@
+version: "3"
+services:
+    elasticsearch:
+        build: ./app/elasticsearch
+        container_name: docker-es
+        ports:
+            - "9200:9200"
+            - "9300:9300"
+        volumes:
+            - /data/var/etc/elasticsearch:/usr/share/elasticsearch/config/elasticsearch.yml
+            - /data/var/lib/elasticsearch:/usr/share/elasticsearch/data
+        networks:
+            - elk-network
+        restart: always
+    kibana:
+        images: docker.elastic.co/kibana/kibana:6.3.0
+        container_name: docker-kibana
+        depends_on:
+            - elasticsearch
+        ports:
+            - "5601:5601"
+        volumes:
+            - /data/var/etc/kibana/kibana.yml:/usr/share/kibana/config/kibana.yml
+        environment:
+            ELASTICSEARCH_URL: http://172.17.0.1:9200
+        networks:
+            - elk-network
+        restart: always
+    logstash:
+        images: docker.elastic.co/logstash/logstash:6.3.0
+        container_name: docker-logstash
+        depends_on:
+            - elasticsearch
+        networks:
+            - elk-network
+        restart: always
+    filebeat:
+        images: docker.elastic.co/beats/filebeat:6.3.0
+        container_name: docker-filebeat
+        depends_on:
+            - elasticsearch
+        networks:
+            - elk-network
+        restart: always
+networks:
+    elk-network:
+        driver: bridge
