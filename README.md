@@ -41,3 +41,7 @@ docker run --name docker-logstash -d docker.elastic.co/logstash/logstash:6.3.0
 Filebeat：
 
 docker run --name docker-filebeat -v /data/var/etc/filebeat/filebeat.yml:/usr/share/filebeat/filebeat.yml -v /data/var/etc/filebeat/prospectors.d:/usr/share/filebeat/prospectors.d -d docker.elastic.co/beats/filebeat:6.3.0
+
+Elasticsearch HQ(通过 web 界面管理 Elasticsearch):
+
+docker run --name docker-hq -p 5000:5000 -e HQ_DEFAULT_URL=http://172.17.0.1:9200 -d elastichq/elasticsearch-hq
