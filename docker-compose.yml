@@ -2,7 +2,7 @@ version: "3"
 services:
     elasticsearch:
         build: ./app/elasticsearch
-        container_name: docker-es
+        container_name: elasticsearch63
         ports:
             - "9200:9200"
             - "9300:9300"
@@ -15,7 +15,7 @@ services:
         restart: always
     kibana:
         images: docker.elastic.co/kibana/kibana:6.3.0
-        container_name: docker-kibana
+        container_name: kibana63
         depends_on:
             - elasticsearch
         ports:
@@ -29,7 +29,7 @@ services:
         restart: always
     logstash:
         images: docker.elastic.co/logstash/logstash:6.3.0
-        container_name: docker-logstash
+        container_name: logstash63
         depends_on:
             - elasticsearch
         networks:
@@ -37,7 +37,7 @@ services:
         restart: always
     filebeat:
         images: docker.elastic.co/beats/filebeat:6.3.0
-        container_name: docker-filebeat
+        container_name: filebeat63
         depends_on:
             - elasticsearch
         volumes:   

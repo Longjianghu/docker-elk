@@ -22,26 +22,26 @@ pip install docker-compose
 
 ### 构建容器
 
-docker build -t docker-es:6.3 ./app/elasticsearch/
+docker build -t elasticsearch:6.3 ./app/elasticsearch/
 
 ### 运行方法
 
 Elasticsearch:
 
-docker run --name docker-es -p 9200:9200 -p 9300:9300 -v /data/var/lib/elasticsearch:/usr/share/elasticsearch/data -v /data/var/etc/elasticsearch/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml -v /data/var/etc/elasticsearch/IKAnalyzer.cfg.xml:/usr/share/elasticsearch/config/analysis-ik/IKAnalyzer.cfg.xml -d docker-es:6.3
+docker run --name elasticsearch63 -p 9200:9200 -p 9300:9300 -v /data/var/lib/elasticsearch:/usr/share/elasticsearch/data -v /data/var/etc/elasticsearch/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml -v /data/var/etc/elasticsearch/IKAnalyzer.cfg.xml:/usr/share/elasticsearch/config/analysis-ik/IKAnalyzer.cfg.xml -d elasticsearch:6.3
 
 Kibana:
 
-docker run --name docker-kibana -p 5601:5601 -v /data/var/etc/kibana/kibana.yml:/usr/share/kibana/config/kibana.yml -d docker.elastic.co/kibana/kibana:6.3.0
+docker run --name kibana63 -p 5601:5601 -v /data/var/etc/kibana/kibana.yml:/usr/share/kibana/config/kibana.yml -d docker.elastic.co/kibana/kibana:6.3.0
 
 Logstash:
 
-docker run --name docker-logstash -d docker.elastic.co/logstash/logstash:6.3.0
+docker run --name logstash63 -d docker.elastic.co/logstash/logstash:6.3.0
 
 Filebeat：
 
-docker run --name docker-filebeat -v /data/var/etc/filebeat/filebeat.yml:/usr/share/filebeat/filebeat.yml -v /data/var/etc/filebeat/prospectors.d:/usr/share/filebeat/prospectors.d -d docker.elastic.co/beats/filebeat:6.3.0
+docker run --name filebeat63 -v /data/var/etc/filebeat/filebeat.yml:/usr/share/filebeat/filebeat.yml -v /data/var/etc/filebeat/prospectors.d:/usr/share/filebeat/prospectors.d -d docker.elastic.co/beats/filebeat:6.3.0
 
 Elasticsearch HQ(通过 web 界面管理 Elasticsearch):
 
-docker run --name docker-hq -p 5000:5000 -e HQ_DEFAULT_URL=http://172.17.0.1:9200 -d elastichq/elasticsearch-hq
+docker run --name elasticsearch-hq -p 5000:5000 -e HQ_DEFAULT_URL=http://172.17.0.1:9200 -d elastichq/elasticsearch-hq
