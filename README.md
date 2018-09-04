@@ -1,6 +1,6 @@
 ### 项目说明
 
-更详细的使用说明请看这是：https://www.docker.elastic.co/，请注意：如果内存过小将无法启动。
+更详细的使用说明请看这是：https://www.docker.elastic.co/ 请注意：如果内存过小将无法启动。
 
 ### 安装 Docker
 
