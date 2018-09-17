@@ -22,7 +22,7 @@ pip install docker-compose
 
 ### 构建容器
 
-docker build -t elasticsearch:6.3 ./app/elasticsearch/
+docker build -t elasticsearch:63 ./app/elasticsearch/
 
 ### 运行方法
 
