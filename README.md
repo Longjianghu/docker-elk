@@ -1,6 +1,6 @@
 ### 项目说明
 
-更详细的使用说明请看这是：https://www.docker.elastic.co/ 请注意：如果内存过小将无法启动(所有镜像均来自于官方，因为下载速度慢被转移作者转移到了docker官方仓库)。
+更详细的使用说明请看这是：https://www.docker.elastic.co/ 请注意：如果内存过小将无法启动(所有镜像均来自于官方 https://www.docker.elastic.co/ ，因为下载速度慢被转移作者转移到了docker官方仓库)。
 
 ### 安装 Docker
 
@@ -22,25 +22,25 @@ pip install docker-compose
 
 ### 构建容器
 
-docker build -t elasticsearch:63 ./app/elasticsearch/
+docker build -t elasticsearch:64 ./app/elasticsearch/
 
 ### 运行方法
 
 Elasticsearch:
 
-docker run --name elasticsearch63 -p 9200:9200 -p 9300:9300 -v /data/var/lib/elasticsearch:/usr/share/elasticsearch/data -v /data/var/etc/elasticsearch/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml -v /data/var/etc/elasticsearch/IKAnalyzer.cfg.xml:/usr/share/elasticsearch/config/analysis-ik/IKAnalyzer.cfg.xml -d elasticsearch:63
+docker run --name elasticsearch64 -p 9200:9200 -p 9300:9300 -v /data/var/lib/elasticsearch:/usr/share/elasticsearch/data -v /data/var/etc/elasticsearch/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml -v /data/var/etc/elasticsearch/IKAnalyzer.cfg.xml:/usr/share/elasticsearch/config/analysis-ik/IKAnalyzer.cfg.xml -d elasticsearch:64
 
 Kibana:
 
-docker run --name kibana63 -p 5601:5601 -v /data/var/etc/kibana/kibana.yml:/usr/share/kibana/config/kibana.yml -d longjianghu/kibana:6.3.0
+docker run --name kibana64 -p 5601:5601 -v /data/var/etc/kibana/kibana.yml:/usr/share/kibana/config/kibana.yml -d longjianghu/kibana:6.4.0
 
 Logstash:
 
-docker run --name logstash63 -d longjianghu/logstash:6.3.0
+docker run --name logstash64 -d longjianghu/logstash:6.4.0
 
 Filebeat：
 
-docker run --name filebeat63 -v /data/var/etc/filebeat/filebeat.yml:/usr/share/filebeat/filebeat.yml -v /data/var/etc/filebeat/prospectors.d:/usr/share/filebeat/prospectors.d -d longjianghu/filebeat:6.3.0
+docker run --name filebeat64 -v /data/var/etc/filebeat/filebeat.yml:/usr/share/filebeat/filebeat.yml -v /data/var/etc/filebeat/prospectors.d:/usr/share/filebeat/prospectors.d -d longjianghu/filebeat:6.4.0
 
 Elasticsearch HQ(通过 web 界面管理 Elasticsearch):
 
