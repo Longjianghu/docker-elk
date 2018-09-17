@@ -28,7 +28,7 @@ docker build -t elasticsearch:63 ./app/elasticsearch/
 
 Elasticsearch:
 
-docker run --name elasticsearch63 -p 9200:9200 -p 9300:9300 -v /data/var/lib/elasticsearch:/usr/share/elasticsearch/data -v /data/var/etc/elasticsearch/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml -v /data/var/etc/elasticsearch/IKAnalyzer.cfg.xml:/usr/share/elasticsearch/config/analysis-ik/IKAnalyzer.cfg.xml -d elasticsearch:6.3
+docker run --name elasticsearch63 -p 9200:9200 -p 9300:9300 -v /data/var/lib/elasticsearch:/usr/share/elasticsearch/data -v /data/var/etc/elasticsearch/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml -v /data/var/etc/elasticsearch/IKAnalyzer.cfg.xml:/usr/share/elasticsearch/config/analysis-ik/IKAnalyzer.cfg.xml -d elasticsearch:63
 
 Kibana:
 
