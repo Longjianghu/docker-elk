@@ -1,6 +1,6 @@
 ### 项目说明
 
-更详细的使用说明请看这是：https://www.docker.elastic.co/ 请注意：如果内存过小将无法启动。
+更详细的使用说明请看这是：https://www.docker.elastic.co/ 请注意：如果内存过小将无法启动(所有镜像均来自于官方，因为下载速度慢被转移作者转移到了docker官方仓库)。
 
 ### 安装 Docker
 
@@ -32,15 +32,15 @@ docker run --name elasticsearch63 -p 9200:9200 -p 9300:9300 -v /data/var/lib/ela
 
 Kibana:
 
-docker run --name kibana63 -p 5601:5601 -v /data/var/etc/kibana/kibana.yml:/usr/share/kibana/config/kibana.yml -d docker.elastic.co/kibana/kibana:6.3.0
+docker run --name kibana63 -p 5601:5601 -v /data/var/etc/kibana/kibana.yml:/usr/share/kibana/config/kibana.yml -d longjianghu/kibana:6.3.0
 
 Logstash:
 
-docker run --name logstash63 -d docker.elastic.co/logstash/logstash:6.3.0
+docker run --name logstash63 -d longjianghu/logstash:6.3.0
 
 Filebeat：
 
-docker run --name filebeat63 -v /data/var/etc/filebeat/filebeat.yml:/usr/share/filebeat/filebeat.yml -v /data/var/etc/filebeat/prospectors.d:/usr/share/filebeat/prospectors.d -d docker.elastic.co/beats/filebeat:6.3.0
+docker run --name filebeat63 -v /data/var/etc/filebeat/filebeat.yml:/usr/share/filebeat/filebeat.yml -v /data/var/etc/filebeat/prospectors.d:/usr/share/filebeat/prospectors.d -d longjianghu/filebeat:6.3.0
 
 Elasticsearch HQ(通过 web 界面管理 Elasticsearch):
 
