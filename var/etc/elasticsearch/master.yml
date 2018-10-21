@@ -1,0 +1,6 @@
+cluster.name: "docker-cluster"
+node.name: master
+network.host: 0.0.0.0
+discovery.zen.minimum_master_nodes: 1
+bootstrap.memory_lock: true
+discovery.zen.ping.unicast.hosts: ['192.168.1.20']
