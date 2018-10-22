@@ -1,6 +1,8 @@
-cluster.name: "docker-cluster"
-node.name: master
-network.host: 0.0.0.0
-discovery.zen.minimum_master_nodes: 1
-bootstrap.memory_lock: true
-discovery.zen.ping.unicast.hosts: ['192.168.1.20']
+cluster.name: "docker-cluster" #集群名称
+node.name: master # 节点名称
+node.master: true # 主节点
+node.data: true # 存放数据
+network.host: 0.0.0.0 # 绑定地址
+discovery.zen.minimum_master_nodes: 1 # 集群master节点数量
+bootstrap.memory_lock: true # 不使用交换分区
+discovery.zen.ping.unicast.hosts: ['192.168.1.20'] # 集群IP地址
