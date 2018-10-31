@@ -38,7 +38,7 @@ docker run --name elasticsearch642 -p 9200:9200 -p 9300:9300 -v /data/var/lib/el
 		
 Kibana:
 
-docker run --name kibana642 -p 5601:5601 -v /data/var/etc/kibana/kibana.yml:/usr/share/kibana/config/kibana.yml -d longjianghu/kibana:6.4.2
+docker run --name kibana642 -p 5601:5601 -v /data/var/etc/kibana/kibana.yml:/usr/share/kibana/config/kibana.yml -d kibana:6.4.2
 
 Logstash:
 
@@ -46,8 +46,4 @@ docker run --name logstash642 -d longjianghu/logstash:6.4.2
 
 Filebeat：
 
-docker run --name filebeat642 -v /data/var/etc/filebeat/filebeat.yml:/usr/share/filebeat/filebeat.yml -v /data/var/etc/filebeat/prospectors.d:/usr/share/filebeat/prospectors.d -d longjianghu/filebeat:6.4.2
-
-Elasticsearch HQ(通过 web 界面管理 Elasticsearch):
-
-docker run --name elasticsearch-hq -p 5000:5000 -e HQ_DEFAULT_URL=http://172.17.0.1:9200 -d elastichq/elasticsearch-hq
+docker run --name filebeat642 -v /data/var/etc/filebeat/filebeat.yml:/usr/share/filebeat/filebeat.yml -v /data/var/etc/filebeat/prospectors.d:/usr/share/filebeat/prospectors.d -d filebeat:6.4.2
