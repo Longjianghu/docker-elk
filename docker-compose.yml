@@ -2,7 +2,7 @@ version: "3"
 services:
     elasticsearch:
         build: ./app/elasticsearch
-        container_name: elasticsearch64
+        container_name: elasticsearch
         ports:
             - "9200:9200"
             - "9300:9300"
@@ -14,8 +14,8 @@ services:
             - elk-network
         restart: always
     kibana:
-        images: longjianghu/kibana:6.4.0
-        container_name: kibana64
+        images: kibana:6.4.2
+        container_name: kibana
         depends_on:
             - elasticsearch
         ports:
@@ -28,16 +28,16 @@ services:
             - elk-network
         restart: always
     logstash:
-        images: longjianghu/logstash:6.4.0
-        container_name: logstash64
+        images: logstash:6.4.2
+        container_name: logstash
         depends_on:
             - elasticsearch
         networks:
             - elk-network
         restart: always
     filebeat:
-        images: longjianghu/filebeat:6.4.0
-        container_name: filebeat64
+        images: filebeat:6.4.2
+        container_name: filebeat
         depends_on:
             - elasticsearch
         volumes:   
