@@ -28,22 +28,22 @@ pip install docker-compose
 
 ### 构建容器
 
-docker build -t elasticsearch:642 ./app/elasticsearch/
+docker build -t elasticsearch:662 ./app/elasticsearch/
 
 ### 运行方法
 
 Elasticsearch
 
-docker run --name elasticsearch -p 9200:9200 -p 9300:9300 -v /data/var/lib/elasticsearch/master:/usr/share/elasticsearch/data -v /data/var/etc/elasticsearch/master.yml:/usr/share/elasticsearch/config/elasticsearch.yml -v /data/var/etc/elasticsearch/IKAnalyzer.cfg.xml:/usr/share/elasticsearch/config/analysis-ik/IKAnalyzer.cfg.xml --ulimit memlock=-1 -d elasticsearch:642
-		
+docker run --name elasticsearch -p 9200:9200 -p 9300:9300 -v /data/var/lib/elasticsearch/master:/usr/share/elasticsearch/data -v /data/var/etc/elasticsearch/master.yml:/usr/share/elasticsearch/config/elasticsearch.yml -v /data/var/etc/elasticsearch/IKAnalyzer.cfg.xml:/usr/share/elasticsearch/config/analysis-ik/IKAnalyzer.cfg.xml --ulimit memlock=-1 -d elasticsearch:662
+
 Kibana:
 
-docker run --name kibana -p 5601:5601 -v /data/var/etc/kibana/kibana.yml:/usr/share/kibana/config/kibana.yml -d kibana:6.4.2
+docker run --name kibana -p 5601:5601 -v /data/var/etc/kibana/kibana.yml:/usr/share/kibana/config/kibana.yml -d kibana:6.6.2
 
 Logstash:
 
-docker run --name logstash -d logstash:6.4.2
+docker run --name logstash -d logstash:6.6.2
 
-Filebeat：
+Filebeat:
 
-docker run --name filebeat -v /data/var/etc/filebeat/filebeat.yml:/usr/share/filebeat/filebeat.yml -v /data/var/etc/filebeat/prospectors.d:/usr/share/filebeat/prospectors.d -d filebeat:6.4.2
+docker run --name filebeat -v /data/var/etc/filebeat/filebeat.yml:/usr/share/filebeat/filebeat.yml -v /data/var/etc/filebeat/prospectors.d:/usr/share/filebeat/prospectors.d -d filebeat:6.6.2
