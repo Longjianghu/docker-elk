@@ -1,6 +1,6 @@
 ### 项目说明
 
-官网地址： https://www.docker.elastic.co。
+官网地址： https://www.docker.elastic.co
 
 参数配置:
 
