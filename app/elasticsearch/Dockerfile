@@ -1,4 +1,4 @@
-FROM elasticsearch:6.7.0
+FROM docker.elastic.co/elasticsearch/elasticsearch:6.7.0
 
 MAINTAINER Longjianghu <215241062@qq.com>
 
