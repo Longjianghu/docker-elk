@@ -1,8 +1,11 @@
-cluster.name: "docker-cluster" #集群名称
-node.name: master # 节点名称
-node.master: true # 主节点
-node.data: true # 存放数据
-network.host: 0.0.0.0 # 绑定地址
-discovery.zen.minimum_master_nodes: 1 # 集群master节点数量
-bootstrap.memory_lock: true # 不使用交换分区
-discovery.zen.ping.unicast.hosts: ['127.0.0.1'] # 集群IP地址
+cluster.name: "docker-cluster"
+node.name: master
+node.master: true
+node.data: true
+network.host: 0.0.0.0
+http.port: 9200
+bootstrap.memory_lock: true
+http.cors.enabled: true
+http.cors.allow-origin: "*"
+transport.tcp.port: 9300
+cluster.initial_master_nodes: ["127.0.0.1"]
