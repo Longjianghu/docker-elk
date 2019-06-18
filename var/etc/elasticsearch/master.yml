@@ -1,11 +1,5 @@
 cluster.name: "docker-cluster"
-node.name: master
-node.master: true
-node.data: true
 network.host: 0.0.0.0
-http.port: 9200
+node.name: "master"
 bootstrap.memory_lock: true
-http.cors.enabled: true
-http.cors.allow-origin: "*"
-transport.tcp.port: 9300
-cluster.initial_master_nodes: ["127.0.0.1"]
+cluster.initial_master_nodes: ["master"]
