@@ -34,6 +34,8 @@ docker build -t elasticsearch:7.1.1 ./app/elasticsearch/
 
 Elasticsearch
 
+由于 Elasticsearch7版本自带 x-pack 安全认证插件,配置文件默认已经启用，如不需要请自行调整配置参数。
+
 docker run --name elasticsearch -p 9200:9200 -p 9300:9300 -v /data/var/lib/elasticsearch/master:/usr/share/elasticsearch/data -v /data/var/etc/elasticsearch/master.yml:/usr/share/elasticsearch/config/elasticsearch.yml -v /data/var/etc/elasticsearch/IKAnalyzer.cfg.xml:/usr/share/elasticsearch/config/analysis-ik/IKAnalyzer.cfg.xml -e ES_JAVA_OPTS="-Xms1g -Xmx1g" --ulimit memlock=-1:-1 -d elasticsearch:7.1.1
 
 Kibana:
