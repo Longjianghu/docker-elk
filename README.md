@@ -38,7 +38,7 @@ Elasticsearch
 
 docker run --name elasticsearch -p 9200:9200 -p 9300:9300 -v /data/var/lib/elasticsearch/master:/usr/share/elasticsearch/data -v /data/var/etc/elasticsearch/master.yml:/usr/share/elasticsearch/config/elasticsearch.yml -v /data/var/etc/elasticsearch/IKAnalyzer.cfg.xml:/usr/share/elasticsearch/config/analysis-ik/IKAnalyzer.cfg.xml -e ES_JAVA_OPTS="-Xms1g -Xmx1g" --ulimit memlock=-1:-1 -d elasticsearch:7.1.1
 
-设置密码:docker exec -it elasticsearch bin/elasticsearch-setup-passwords interactive
+设置密码:docker exec -it elasticsearch /usr/share/elasticsearch/bin/elasticsearch-setup-passwords interactive
 
 Kibana:
 
