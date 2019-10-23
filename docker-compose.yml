@@ -14,7 +14,7 @@ services:
             - elk-network
         restart: always
     kibana:
-        images: kibana:6.7.2
+        images: kibana:7.1.1
         container_name: kibana
         depends_on:
             - elasticsearch
@@ -28,7 +28,7 @@ services:
             - elk-network
         restart: always
     logstash:
-        images: logstash:6.7.2
+        images: logstash:7.1.1
         container_name: logstash
         depends_on:
             - elasticsearch
@@ -36,7 +36,7 @@ services:
             - elk-network
         restart: always
     filebeat:
-        images: filebeat:6.7.2
+        images: filebeat:7.1.1
         container_name: filebeat
         depends_on:
             - elasticsearch
