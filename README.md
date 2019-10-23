@@ -28,13 +28,13 @@ pip install docker-compose
 
 ### 构建容器
 
-docker build -t elasticsearch:6.7.2 ./app/elasticsearch/
+docker build -t elasticsearch:6.7 ./app/elasticsearch/
 
 ### 运行方法
 
 Elasticsearch
 
-docker run --name elasticsearch -p 9200:9200 -p 9300:9300 -v /data/var/lib/elasticsearch/master:/usr/share/elasticsearch/data -v /data/var/etc/elasticsearch/master.yml:/usr/share/elasticsearch/config/elasticsearch.yml -v /data/var/etc/elasticsearch/IKAnalyzer.cfg.xml:/usr/share/elasticsearch/config/analysis-ik/IKAnalyzer.cfg.xml -e ES_JAVA_OPTS="-Xms1g -Xmx1g" --ulimit memlock=-1:-1 -d elasticsearch:6.7.2
+docker run --name elasticsearch -p 9200:9200 -p 9300:9300 -v /data/var/lib/elasticsearch/master:/usr/share/elasticsearch/data -v /data/var/etc/elasticsearch/master.yml:/usr/share/elasticsearch/config/elasticsearch.yml -v /data/var/etc/elasticsearch/IKAnalyzer.cfg.xml:/usr/share/elasticsearch/config/analysis-ik/IKAnalyzer.cfg.xml -e ES_JAVA_OPTS="-Xms1g -Xmx1g" --ulimit memlock=-1:-1 -d elasticsearch:6.7
 
 Kibana:
 
