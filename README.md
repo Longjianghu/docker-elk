@@ -22,9 +22,9 @@ curl -sSL https://get.daocloud.io/daotools/set_mirror.sh | sh -s https://registr
 
 ### 安装 Docker-Compose
 
-yum -y install epel-release python-pip
+curl -L https://github.com/docker/compose/releases/download/1.25.4/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
 
-pip install docker-compose
+chmod a+x /usr/local/bin/docker-compose
 
 ### 构建容器
 
