@@ -1,4 +1,4 @@
-FROM elasticsearch:7.1.1
+FROM elasticsearch:7.9.3
 
 MAINTAINER Longjianghu <215241062@qq.com>
 
@@ -9,6 +9,6 @@ MAINTAINER Longjianghu <215241062@qq.com>
 COPY ./src/* /tmp/
 
 RUN set -xe \
-	&& ./bin/elasticsearch-plugin install -b file:///tmp/elasticsearch-analysis-ik-7.1.1.zip \
-	&& ./bin/elasticsearch-plugin install -b file:///tmp/elasticsearch-analysis-pinyin-7.1.1.zip \
+	&& ./bin/elasticsearch-plugin install -b file:///tmp/elasticsearch-analysis-ik-7.9.3.zip \
+	&& ./bin/elasticsearch-plugin install -b file:///tmp/elasticsearch-analysis-pinyin-7.9.3.zip \
 	&& rm /tmp/* -rf
