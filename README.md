@@ -36,7 +36,9 @@ Elasticsearch
 
 由于 Elasticsearch7版本自带 x-pack 安全认证插件,配置文件默认已经启用，如不需要请自行调整配置参数。
 
-docker run --name elasticsearch -p 9200:9200 -p 9300:9300 -v /data/var/lib/elasticsearch/master:/usr/share/elasticsearch/data -v /data/var/etc/elasticsearch/master.yml:/usr/share/elasticsearch/config/elasticsearch.yml -v /data/var/etc/elasticsearch/IKAnalyzer.cfg.xml:/usr/share/elasticsearch/config/analysis-ik/IKAnalyzer.cfg.xml -e "ES_JAVA_OPTS=-Xms512m -Xmx512m" --ulimit memlock=-1:-1 --ulimit nofile=65535:65535 -d longjianghu/elasticsearch:7.9.3
+docker run --name elasticsearch -p 9200:9200 -p 9300:9300 -v /data/var/lib/elasticsearch:/usr/share/elasticsearch/data -v /data/var/etc/elasticsearch/master.yml:/usr/share/elasticsearch/config/elasticsearch.yml -v /data/var/etc/elasticsearch/IKAnalyzer.cfg.xml:/usr/share/elasticsearch/config/analysis-ik/IKAnalyzer.cfg.xml -e "bootstrap.memory_lock=true" -e "ES_JAVA_OPTS=-Xms512m -Xmx512m" --ulimit memlock=-1:-1 --ulimit nofile=65535:65535 -e "discovery.type=single-node" -d longjianghu/elasticsearch:7.9.3
+
+> https://www.elastic.co/guide/en/elasticsearch/reference/7.9/docker.html
 
 设置密码:
 
@@ -48,10 +50,16 @@ Kibana:
 
 docker run --name kibana -p 5601:5601 -v /data/var/etc/kibana.yml:/usr/share/kibana/config/kibana.yml -d kibana:7.9.3
 
+> https://www.elastic.co/guide/en/beats/filebeat/7.9/running-on-docker.html
+
 Logstash:
 
-docker run --name logstash -d logstash:7.9.3
+docker run --name logstash -v -v /data/var/etc/logstash.yml:/usr/share/logstash/config/logstash.yml -d logstash:7.9.3
+
+> https://www.elastic.co/guide/en/logstash/7.9/docker-config.html
 
 Filebeat:
 
-docker run --name filebeat -v /data/var/etc/filebeat/filebeat.yml:/usr/share/filebeat/filebeat.yml -v /data/var/etc/filebeat/prospectors.d:/usr/share/filebeat/prospectors.d -d filebeat:7.9.3
+docker run --name filebeat -v /data/var/etc/filebeat/filebeat.yml:/usr/share/filebeat/filebeat.yml -v /data/var/etc/filebeat/modules.d:/usr/share/filebeat/modules.d -d elastic/filebeat:7.9.3
+
+> https://www.elastic.co/guide/en/beats/filebeat/7.9/running-on-docker.html

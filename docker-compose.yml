@@ -11,7 +11,7 @@ services:
             - /data/var/etc/elasticsearch/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
             - /data/var/lib/elasticsearch:/usr/share/elasticsearch/data
         networks:
-            - elk-network
+            - elastic
         restart: always
     kibana:
         images: kibana:7.9.3
@@ -25,7 +25,7 @@ services:
         environment:
             ELASTICSEARCH_URL: http://172.17.0.1:9200
         networks:
-            - elk-network
+            - elastic
         restart: always
     logstash:
         images: logstash:7.9.3
@@ -33,7 +33,7 @@ services:
         depends_on:
             - elasticsearch
         networks:
-            - elk-network
+            - elastic
         restart: always
     filebeat:
         images: filebeat:7.9.3
@@ -42,10 +42,10 @@ services:
             - elasticsearch
         volumes:   
             - /data/var/etc/filebeat/filebeat.yml:/usr/share/filebeat/filebeat.yml
-            - /data/var/etc/filebeat/prospectors.d:/usr/share/filebeat/prospectors.d
+            - /data/var/etc/filebeat/modules.d:/usr/share/filebeat/modules.d
         networks:
-            - elk-network
+            - elastic
         restart: always
 networks:
-    elk-network:
+    elastic:
         driver: bridge
